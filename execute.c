@@ -33,7 +33,7 @@ void exe_opn(char *op_cmd, stack_t **head, unsigned int line_number)
 
 	if (op_cmd[0] != '#' && strlen(op_cmd) != 0)
 	{
-		fprintf(stderr, "L%u: unknown instruction %s\n", line_number,op_cmd);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op_cmd);
 		free_src_code_line();
 		exit(EXIT_FAILURE);
 	}

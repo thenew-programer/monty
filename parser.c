@@ -16,7 +16,7 @@ void parse(char *fileName, stack_t **head UNUSED)
 	unsigned int lineNumber = 1;
 
 	src_code = fopen(fileName, "r");
-	if (src_code == NULL)
+	if (!src_code)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", fileName);
 		exit(EXIT_FAILURE);
@@ -26,16 +26,16 @@ void parse(char *fileName, stack_t **head UNUSED)
 
 	atexit(freeDataStructure);
 
-	while ((read = getline(&line, &len, src_code)) != -1) 
+	while ((read = getline(&line, &len, src_code)) != -1)
 	{
 		GLOBAL_var.line = line;
 		op = strtok(line, DELIMS);
-		if (op != NULL)
+		if (op)
 			exe_opn(op, head, lineNumber);
 		lineNumber++;
 	}
 
-    fclose(src_code);
-    if (line)
-        free(line);
+	fclose(src_code);
+	if (line)
+		free(line);
 }

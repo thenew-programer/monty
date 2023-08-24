@@ -21,8 +21,7 @@ void freeDataStructure(void)
 
 
 /**
- * free_fp_line - function that frees the file pointer and line
- *
+ * free_src_code_line - function that frees the file pointer and line
  * Return: void
  */
 void free_src_code_line(void)
