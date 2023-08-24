@@ -26,7 +26,7 @@ void parse(char *fileName, stack_t **head UNUSED)
 
 	atexit(freeDataStructure);
 
-	while ((read = getline(&line, &len, src_code)) != -1) 
+	while ((read = getline(&line, &len, src_code)) != -1)
 	{
 		GLOBAL_var.line = line;
 		op = strtok(line, DELIMS);
@@ -35,7 +35,7 @@ void parse(char *fileName, stack_t **head UNUSED)
 		lineNumber++;
 	}
 
-    fclose(src_code);
-    if (line)
-        free(line);
+	fclose(src_code);
+	if (line)
+		free(line);
 }
