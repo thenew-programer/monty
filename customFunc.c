@@ -89,3 +89,66 @@ void do_pint(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * do_pop - function that removes the first element of the stack
+ * @stack: pointer to the top of the stack
+ * @line_number: error line number
+ *
+ * Return: void
+ */
+void do_pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n",
+			line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *stack;
+	*stack = (*stack)->next;
+	temp->prev = NULL;
+
+	free(temp);
+}
+
+/**
+ * do_swap - function that swaps the first two elements of the stack
+ * @stack: pointer to the top of the stack
+ * @line_number: error line number
+ *
+ * Return: void
+ */
+void do_swap(stack_t **stack, unsigned int line_number)
+{
+	int temp1, temp2;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n",
+			line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp1 = (*stack)->n;
+	temp2 = (*stack)->next->n;
+
+	(*stack)->n = temp2;
+	(*stack)->next->n = temp1;
+
+}
+
+/**
+ * do_nop - opcode that does nothing
+ * @stack: pointer to stack
+ * @line_number: line number
+ *
+ * Return: void
+ */
+void do_nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
