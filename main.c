@@ -1,32 +1,19 @@
 #include "monty.h"
 #include <stdio.h>
+global_vars_t GLOBAL_var;
 
 int main(int argc, char **argv)
 {
-	FILE *src_code;
-	size_t len = 0;
-	ssize_t read;
-	char *line = NULL;
+	stack_t *head = NULL;
+	GLOBAL_var.top = &head;
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "Usage: monty <file>\n");
 		exit(EXIT_FAILURE);
 	}
-	src_code = fopen(argv[1], "r");
-	if (!src_code)
-	{
-		fprintf(stderr, "Error: Can't open file <file>\n");
-		exit(EXIT_FAILURE);
-	}
-    while ((read = getline(&line, &len, src_code)) != -1) {
-		if (line[read - 1] == 10)
- 			line[read - 1] = 0;
-        printf("Retrieved line of length %lu:\n", strlen(line));
-        printf("%s\n", line);
-    }
 
-    fclose(src_code);
-    if (line)
-        free(line);
-    exit(EXIT_SUCCESS);
+	parse(argv[1], &head);
+	exit(EXIT_SUCCESS);
+
 }

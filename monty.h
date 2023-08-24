@@ -1,6 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define DELIMS " \t\n\r"
+#define UNUSED __attribute__((unused))
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
@@ -40,5 +43,36 @@ typedef struct instruction_s
 
 extern stack_t stack;
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+
+
+/* helper functions */
+void parse(char *fileName, stack_t **head);
+void dropnl(char *src);
+void exe_opn(char *operation, stack_t **head, unsigned int line_number);
+int _isdigit(char *str);
+void freeDataStructure(void);
+void free_src_code_line(void);
+
+/* instructions */
+void do_push(stack_t **stack, unsigned int line_number);
+void do_pall(stack_t **stack, unsigned int line_number);
+void do_pint(stack_t **stack, unsigned int line_number);
+
+/**
+ * struct global_vars_s - global structure
+ * @top: points to the top of the stack
+ * @src_code_p: points to the file pointer
+ * @line: points to the current line of the script
+ *
+ */
+
+typedef struct global_vars_s
+{
+	stack_t **top;
+	FILE *src_code_p;
+	char *line;
+} global_vars_t;
+
+extern global_vars_t GLOBAL_var;
 
 #endif /* MONTY_H */
