@@ -33,6 +33,14 @@ void exe_opn(char *op_cmd, stack_t **head, unsigned int line_number)
 			all_ops[i].f(head, line_number);
 			return;
 		}
+		else
+		{
+			if (op_cmd[0] == '#')
+			{
+				do_nop(head, line_number);
+				return;
+			}
+		}
 	}
 
 	if (op_cmd[0] != '#' && strlen(op_cmd) != 0)
