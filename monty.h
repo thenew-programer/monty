@@ -62,6 +62,8 @@ void do_swap(stack_t **stack, unsigned int line_number);
 void do_add(stack_t **stack, unsigned int line_number);
 void do_nop(stack_t **stack, unsigned int line_number);
 void do_sub(stack_t **stack, unsigned int line_number);
+void do_div(stack_t **stack, unsigned int line_number);
+void do_mul(stack_t **stack, unsigned int line_number);
 
 /**
  * struct global_vars_s - global structure
