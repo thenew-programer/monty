@@ -1,6 +1,8 @@
 #include "monty.h"
 #include <stdio.h>
 
+
+global_vars_t GLOBAL_var;
 /**
  * main - entry point
  * @argc: argument counter
@@ -11,16 +13,14 @@
 int main(int argc, char **argv)
 {
 	stack_t *head = NULL;
-	global_vars_t GLOBAL_var;
 
-	GLOBAL_var.top = &head;
 	if (argc != 2)
 	{
 		fprintf(stderr, "Usage: monty <file>\n");
 		exit(EXIT_FAILURE);
 	}
+	GLOBAL_var.top = &head;
 
 	parse(argv[1], &head);
 	exit(EXIT_SUCCESS);
-
 }
