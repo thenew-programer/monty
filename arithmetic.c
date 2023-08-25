@@ -9,7 +9,7 @@
  */
 void do_add(stack_t **stack, unsigned int line_number)
 {
-	int a, b, sum;
+	int tmp;
 
 	if (!*stack || !(*stack)->next)
 	{
@@ -18,13 +18,9 @@ void do_add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	a = (*stack)->n;
-	b = (*stack)->next->n;
-	sum = a + b;
-
+	tmp = (*stack)->n;
 	do_pop(stack, line_number);
-
-	(*stack)->n = sum;
+	(*stack)->n += tmp;
 }
 
 
@@ -37,7 +33,7 @@ void do_add(stack_t **stack, unsigned int line_number)
  */
 void do_sub(stack_t **stack, unsigned int line_number)
 {
-	int a, b, result;
+	int tmp;
 
 	if (!*stack || !(*stack)->next)
 	{
@@ -46,13 +42,9 @@ void do_sub(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	b = (*stack)->n;
-	a = (*stack)->next->n;
-	result = a - b;
-
+	tmp = (*stack)->n;
 	do_pop(stack, line_number);
-
-	(*stack)->n = result;
+	(*stack)->n -= tmp;
 }
 
 
@@ -65,7 +57,7 @@ void do_sub(stack_t **stack, unsigned int line_number)
  */
 void do_div(stack_t **stack, unsigned int line_number)
 {
-	int a, b, result;
+	int tmp;
 
 	if (!*stack || !(*stack)->next )
 	{
@@ -74,18 +66,14 @@ void do_div(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	b = (*stack)->n;
-	a = (*stack)->next->n;
-	if (b == 0)
+	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero", line_number);
 		exit(EXIT_FAILURE);
 	}
-	result = a / b;
-
+	tmp = (*stack)->n;
 	do_pop(stack, line_number);
-
-	(*stack)->n = result;
+	(*stack)->n /= tmp;
 }
 
 
@@ -98,7 +86,7 @@ void do_div(stack_t **stack, unsigned int line_number)
  */
 void do_mul(stack_t **stack, unsigned int line_number)
 {
-	int a, b, result;
+	int tmp;
 
 	if (!*stack || !(*stack)->next )
 	{
@@ -107,13 +95,9 @@ void do_mul(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	b = (*stack)->n;
-	a = (*stack)->next->n;
-	result = a * b;
-
+	tmp = (*stack)->n;
 	do_pop(stack, line_number);
-
-	(*stack)->n = result;
+	(*stack)->n *= tmp;
 }
 
 /**
@@ -126,7 +110,7 @@ void do_mul(stack_t **stack, unsigned int line_number)
  */
 void do_mod(stack_t **stack, unsigned int line_number)
 {
-	int a, b, result;
+	int mod;
 
 	if (!*stack || !(*stack)->next)
 	{
@@ -135,16 +119,12 @@ void do_mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	b = (*stack)->n;
-	a = (*stack)->next->n;
-	if (b == 0)
+	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero", line_number);
 		exit(EXIT_FAILURE);
 	}
-	result = a % b;
-
+	mod = (*stack)->n;
 	do_pop(stack, line_number);
-
-	(*stack)->n = result;
+	(*stack)->n %= mod;
 }
