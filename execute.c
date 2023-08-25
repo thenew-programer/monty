@@ -15,6 +15,10 @@ void exe_opn(char *op_cmd, stack_t **head, unsigned int line_number)
 		{"push", do_push},
 		{"pall", do_pall},
 		{"pint", do_pint},
+		{"pop", do_pop},
+		{"swap", do_swap},
+		{"add", do_add},
+		{"nop", do_nop},
 		{NULL, NULL}
 	};
 
