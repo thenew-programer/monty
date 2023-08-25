@@ -1,19 +1,12 @@
 #include "monty.h"
 #include <stdio.h>
-
-/**
- * main - entry point
- * @argc: argument counter
- * @argv: argument array
- * Return: success or failure
-*/
+global_vars_t GLOBAL_var;
 
 int main(int argc, char **argv)
 {
 	stack_t *head = NULL;
-	global_vars_t GLOBAL_var;
-
 	GLOBAL_var.top = &head;
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "Usage: monty <file>\n");
