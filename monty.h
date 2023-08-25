@@ -55,15 +55,16 @@ void free_src_code_line(void);
 
 /* instructions */
 void do_push(stack_t **stack, unsigned int line_number);
+void do_pop(stack_t **stack, unsigned int line_number);
 void do_pall(stack_t **stack, unsigned int line_number);
 void do_pint(stack_t **stack, unsigned int line_number);
-void do_pop(stack_t **stack, unsigned int line_number);
 void do_swap(stack_t **stack, unsigned int line_number);
-void do_add(stack_t **stack, unsigned int line_number);
 void do_nop(stack_t **stack, unsigned int line_number);
+void do_add(stack_t **stack, unsigned int line_number);
 void do_sub(stack_t **stack, unsigned int line_number);
-void do_div(stack_t **stack, unsigned int line_number);
 void do_mul(stack_t **stack, unsigned int line_number);
+void do_div(stack_t **stack, unsigned int line_number);
+void do_mod(stack_t **stack, unsigned int line_number);
 
 /**
  * struct global_vars_s - global structure
