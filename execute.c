@@ -22,6 +22,7 @@ void exe_opn(char *op_cmd, stack_t **head, unsigned int line_number)
 		{"sub", do_sub},
 		{"div", do_div},
 		{"mul", do_mul},
+		{"mod", do_mod},
 		{NULL, NULL}
 	};
 
