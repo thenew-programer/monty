@@ -34,7 +34,7 @@ void do_push(stack_t **stack, unsigned int line_number)
 	char *str_num;
 	int num;
 
-	if (!newnode)
+	if (newnode == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_src_code_line();
@@ -78,7 +78,7 @@ void do_pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
 
-	if (!stack || !*stack)
+	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n",
 			line_number);
@@ -140,3 +140,15 @@ void do_swap(stack_t **stack, unsigned int line_number)
 
 }
 
+/**
+ * do_nop - opcode that does nothing
+ * @stack: pointer to stack
+ * @line_number: line number
+ *
+ * Return: void
+ */
+void do_nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
